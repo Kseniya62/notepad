@@ -1,0 +1,68 @@
+﻿<Window
+    x:Class="notepad.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:notepad"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Блокнот"
+    Width="640"
+    Height="480"
+    MinWidth="200"
+    MinHeight="140"
+    Closing="Window_Closing"
+    mc:Ignorable="d">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+
+        <Menu
+            Grid.Row="0"
+            Background="White"
+            BorderBrush="#EEEEEE"
+            BorderThickness="0,0,0,2">
+            <Menu.Effect>
+                <DropShadowEffect
+                    BlurRadius="0"
+                    Direction="270"
+                    ShadowDepth="2"
+                    Color="#FFE0E0E0" />
+            </Menu.Effect>
+            <MenuItem Header="Файл">
+                <MenuItem Click="NewPage_Click" Header="Cоздать" />
+                <MenuItem Click="Open_Click" Header="Открыть..." />
+                <MenuItem Click="Save_Click" Header="Сохранить" />
+                <MenuItem Click="SaveHow_Click" Header="Сохранить как..." />
+                <Separator />
+                <MenuItem Click="Exit" Header="Выход" />
+            </MenuItem>
+
+            <MenuItem Header="Правка">
+                <MenuItem Click="Undo_Click" Header="Отменить" />
+                <Separator />
+                <MenuItem Click="Cut_Click" Header="Вырезать" />
+                <MenuItem Click="Copy_Click" Header="Копировать" />
+                <MenuItem Click="Paste_Click" Header="Вставить" />
+                <MenuItem Click="Clear_Click" Header="Очистить"  />
+                <MenuItem Click="Go_Click" Header="Найти строку"  />
+            </MenuItem>
+            <MenuItem Click="Info_Click" Header="Справка" />
+        </Menu>
+
+        <RichTextBox
+            Name="textbox"
+            Grid.Row="1"
+            Block.LineHeight="1"
+            BorderThickness="0"
+            HorizontalScrollBarVisibility="Visible"
+            PreviewTextInput="Textbox_PreviewTextInput"
+            TextChanged="RichTxt_TextChanged"
+            VerticalScrollBarVisibility="Visible" />
+
+        <StatusBar Grid.Row="2" />
+    </Grid>
+</Window>
